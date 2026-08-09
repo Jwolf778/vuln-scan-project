@@ -15,6 +15,26 @@ Duration	19 minutes
 
 Metasploitable ships with services that are genuinely exploitable, not simulated. Putting it on my real network would have exposed every other host to it and given an attacker a foothold. So I isolated it on a host-only adapter with no route out. Network segmentation is one of those Security+ concepts that feels abstract until you have a reason to actually use it.
 
+## Building the lab
+
+Getting the environment working took longer than the scan did.
+
+The VM would not pull an address. Running dhclient showed DHCPDISCOVER
+going out with no offers coming back, because a host-only adapter in
+VirtualBox has no DHCP server behind it by default. I assigned a static
+address manually instead, which is better for a lab anyway since the
+target IP will not move between scans.
+
+The first static address I picked also failed. VirtualBox had created a
+second host-only adapter on a different subnet than the one I assumed,
+and my VM was attached to that one. Once I checked which interface the
+VM was actually bound to and matched the subnet, the host could reach
+the target and the scan had something to talk to.
+
+Small problems, but they were a reminder that a scanner is only as good
+as the connectivity underneath it. An unreachable target returns a clean
+report, and a clean report from a broken scan is worse than no report.
+
 What came back
 Severity	Count
 Critical	10
