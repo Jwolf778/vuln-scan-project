@@ -15,7 +15,7 @@ Duration	19 minutes
 
 Metasploitable ships with services that are genuinely exploitable, not simulated. Putting it on my real network would have exposed every other host to it and given an attacker a foothold. So I isolated it on a host-only adapter with no route out. Network segmentation is one of those Security+ concepts that feels abstract until you have a reason to actually use it.
 
-## Building the lab
+ Building the lab
 
 Getting the environment working took longer than the scan did.
 
